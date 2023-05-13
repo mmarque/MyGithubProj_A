@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+        <title>Main Planner Page</title>
+        <h1>Doctor's Appoinment</h1>
+
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                height: 1100px;
+                font-family: Roboto;
+            }
+
+            h1 {
+                text-align: center;
+                margin-bottom: 5px;
+                font-size: 35px;
+            }
+
+            h1,
+            caption {
+                font-weight: 300;
+            }
+
+            caption,
+            th {
+                background: #bad170;
+                color: rgb(43, 55, 184);
+            }
+
+            caption {
+                border-radius: 5px;
+                border: 1px solid rgb(60, 54, 54);
+                font-size: 40px;
+            }
+
+            th {
+                text-align: center;
+                border: 1px solid white;
+                font-style: normal;
+                font-family: 'Roboto';
+                font-size: 25px;
+                font-weight: normal;
+
+            }
+
+            table {
+                border-radius: 1em;
+                border-spacing: 0px;
+                border-collapse: collapse;
+                width: auto;
+                height: auto;
+                border: none;
+                border-width: 5px;
+                font-family: 'sans-serif';
+                font-size: 90%;
+                color: black;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            td {
+                border-right: 1px solid white;
+                padding: 1px 10px 15px 10px;
+                text-align: left;
+            }
+
+            tbody tr:nth-child(odd) {
+                background: rgb(222, 234, 193);
+            }
+
+            tbody tr:nth-child(even) {
+                background: rgb(222, 234, 193);
+            }
+
+            .day {
+                font-size: 25px;
+                font-style: italic;
+                font-weight: bold;
+                color: rgb(143, 72, 5);
+            }
+
+            .day:hover {
+                cursor: pointer;
+            }
+
+            .trborder {
+                border-top: 1px solid white;
+            }
+
+            .copyright {
+                margin-top: auto;
+                text-align: center;
+                color: blue;
+
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <table>
+            <caption>which month</caption>
+            <tbody>
+                <tr>
+                    <th>Sun</th>
+                    <th>Mon</th>
+                    <th>Tue</th>
+                    <th>Wed</th>
+                    <th>Thu</th>
+                    <th>Fri</th>
+                    <th>Sat</th>
+                </tr>
+                <tr class="trborder">
+                    <td>
+                        <button type="button" onclick="showPageTwo(this.id)" id="d01" class="day"></button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="showPageTwo(this.id)" id="d02" class="day"></button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="showPageTwo(this.id)" id="d03" class="day"></button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="showPageTwo(this.id)" id="d04" class="day"></button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="showPageTwo(this.id)" id="d05" class="day">Clickday</button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="showPageTwo(this.id)" id="d06" class="day">Clickday</button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="showPageTwo(this.id)" id="d07" class="day">Clickday</button>
+                    </td>
+                </tr>
+                <tr id="week1">
+                    <td>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </td>
+                    <td>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </td>
+                    <td>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </td>
+                    <td>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </td>
+                    <td>
+                        <div></div>
+                        <div></div>
+                    </td>
+                    <td>
+                        <div></div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                    </td>
+                    <td>
+                        <div></div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+
+                    </td>
+                </tr>
+                <tr class="trborder">
+                    <td>
+                        <button type="button" onclick="showPageTwo(this.id)" id="d08" class="day">Clickday</button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="showPageTwo(this.id)" id="d09" class="day">Clickday</button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="showPageTwo(this.id)" id="d10" class="day">Clickday</button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="showPageTwo(this.id)" id="d11" class="day">Clickday</button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="showPageTwo(this.id)" id="d12" class="day">Clickday</button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="showPageTwo(this.id)" id="d13" class="day">Clickday</button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="showPageTwo(this.id)" id="d14" class="day">Clickday</button>
+                    </td>
+                </tr>
+                <tr id="'week2">
+                    <td>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                    </td>
+                    <td>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                    </td>
+                    <td>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                    </td>
+                    <td>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                    </td>
+                    <td>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                    </td>
+                    <td>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                    </td>
+                    <td>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                    </td>
+                </tr>
+                <tr class="trborder">
+                    <td>
+                        <button type="button" onclick="showPageTwo(this.id)" id="d15" class="day">Clickday</button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="showPageTwo(this.id)" id="d16" class="day">Clickday</button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="showPageTwo(this.id)" id="d17" class="day">Clickday</button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="showPageTwo(this.id)" id="d18" class="day">Clickday</button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="showPageTwo(this.id)" id="d19" class="day">Clickday</button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="showPageTwo(this.id)" id="d20" class="day">Clickday</button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="showPageTwo(this.id)" id="d21" class="day">Clickday</button>
+                    </td>
+                </tr>
+                <tr id="" week3>
+                    <td>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                    </td>
+                    <td>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                    </td>
+                    <td>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                    </td>
+                    <td>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                    </td>
+                    <td>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                    </td>
+                    <td>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                    </td>
+                    <td>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                    </td>
+                </tr>
+                <tr class="trborder">
+                    <td>
+                        <button type="button" onclick="showPageTwo(this.id)" id="d22" class="day">Clickday</button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="showPageTwo(this.id)" id="d23" class="day">Clickday</button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="showPageTwo(this.id)" id="d24" class="day">Clickday</button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="showPageTwo(this.id)" id="d25" class="day">Clickday</button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="showPageTwo(this.id)" id="d26" class="day">Clickday</button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="showPageTwo(this.id)" id="d27" class="day">Clickday</button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="showPageTwo(this.id)" id="d28" class="day">Clickday</button>
+                    </td>
+                </tr>
+                <tr id="week4">
+                    <td>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                    </td>
+                    <td>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                    </td>
+                    <td>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                    </td>
+                    <td>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                    </td>
+                    <td>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                    </td>
+                    <td>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                    </td>
+                    <td>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                    </td>
+                </tr>
+                <tr class="trborder">
+                    <td>
+                        <button type="button" onclick="showPageTwo(this.id)" id="d29" class="day">Clickday</button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="showPageTwo(this.id)" id="d30" class="day">Clickday</button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="showPageTwo(this.id)" id="d31" class="day">Clickday.</button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="showPageTwo(this.id)" id="d32" class="day"></button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="showPageTwo(this.id)" id="d33" class="day"></button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="showPageTwo(this.id)" id="d34" class="day"></button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="showPageTwo(this.id)" id="d35" class="day"></button>
+                    </td>
+                </tr>
+                <tr id="week5">
+                    <td>
+                        <div></div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                    </td>
+                    <td>
+                        <div></div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                    </td>
+                    <td>
+                        <div></div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                    </td>
+                    <td>
+                        <div></div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                        <div>hh:mm am-hh:mm pm</div>
+                    </td>
+                    <td>
+                        <div></div>
+                    </td>
+                    <td>
+                        <div></div>
+                    </td>
+                    <td>
+                        <div></div>
+                    </td>
+                </tr>
+                <tr class="trborder">
+                    <td>
+                        <button type="button" onclick="showPageTwo(this.id)" id="d36" class="day"></button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="showPageTwo(this.id)" id="d37" class="day"></button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="showPageTwo(this.id)" id="d38" class="day"></button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="showPageTwo(this.id)" id="d39" class="day"></button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="showPageTwo(this.id)" id="d40" class="day"></button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="showPageTwo(this.id)" id="d41" class="day"></button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="showPageTwo(this.id)" id="d42" class="day"></button>
+                    </td>
+                </tr>
+                <tr id="week6">
+                    <td>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </td>
+                    <td>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </td>
+                    <td>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </td>
+                    <td>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </td>
+                    <td>
+                        <div></div>
+                    </td>
+                    <td>
+                        <div></div>
+                    </td>
+                    <td>
+                        <div></div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <footer>
+            <div class="copyright">Copyright</div>
+        </footer>
+    </body>
+
+</html>
+
+<script type="text/javascript" src="mainCalendar.js">
+</script>

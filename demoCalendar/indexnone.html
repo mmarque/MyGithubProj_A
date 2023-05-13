@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+
+  <title>Testing JavaScript</title>
+
+      <style>
+        caption {
+          font-size: 40px;
+        }
+        table {
+            border-collapse: separate;
+            border-spacing: 2px;
+            border-style: 1px;
+            font-size: 75%;
+            color: black;
+          }
+    
+          table.center {
+            margin-left:auto; 
+            margin-right:auto;
+          }  
+          
+          td {
+            padding: 10px 15px;
+            vertical-align: middle;
+          }
+          .ct1 {
+            padding-top:1px;
+            padding-bottom: 2px;
+            text-align:right;
+            font-size: 25px;
+            color:yellow;
+  
+          }
+          .ct2 {
+            padding-bottom: 2px;
+            background: none;
+            color: black;
+          }
+          .ct3 {
+            padding-bottom: 2px;
+            background: rgb(181, 214, 103);
+            color: black;
+          }
+          .ct4 {
+            padding-bottom: 2px;
+            color: black;
+          }
+          .ct5 {
+            padding-bottom: 2px;
+            background: none;
+            color: black;
+          }
+          caption {
+            background: #bad170;
+            color: #fff;
+          }
+          th:first-child {
+            text-align: left;
+          }
+          tbody tr:nth-child(even) {
+            background: #119d98;
+          }
+          td {
+            border-bottom: 1px solid #cecfd5;
+            border-right: 1px solid #cecfd5;
+          }
+          td:first-child {
+            border-left: 1px solid #cecfd5;
+          }
+    </style>
+    
+  </head>
+  
+  <body>
+    <table id="mytable"> 
+          <caption>&ltCALENDAR MONTH&gt</caption>
+          <tr>
+              <th width="200" height="10" scope="col">Sun</td>
+              <th width="200" height="10" scope="col">Mon</td>
+              <th width="200" height="10" scope="col">Tue</td>
+              <th width="200" height="10" scope="col">Wed</td>
+              <th width="200" height="10" scope="col">Thu</td>
+              <th width="200" height="10" scope="col">Fri</td>
+              <th width="200" height="10" scope="col">Sat</td>
+          </tr>
+          <tr >
+              <td id="r1c1" width="150" height="10" >
+                <div class="container">
+                  <div class="ct1">dd</div>
+                  <div class="ct2">hh:mm am-hh:mm pm</div>
+                  <div class="ct3">hh:mm am-hh:mm pm</div>
+                  <div class="ct4">hh:mm am-hh:mm pm</div>
+                  <div class="ct5">hh:mm am-hh:mm pm</div>
+                </div>
+              </td>
+              <td id="r1c2" width="150" height="10">2</td>
+              <td id="r1c3" width="150" height="10">3</td>
+              <td id="r1c4" width="150" height="10">4</td>
+              <td id="r1c5" width="150" height="10">5</td>
+              <td id="r1c6" width="150" height="10">6</td>
+              <td id="r1c7" width="150" height="10">7</td>
+          </tr>
+          <tr>
+              <td width="150" height="10">g1r2</td>
+              <td width="150" height="10">2</td>
+              <td width="150" height="10">3</td>
+              <td width="150" height="10">4</td>
+              <td width="150" height="10">5</td>
+              <td width="150" height="10">6</td>
+              <td width="150" height="10">7</td>
+          </tr>
+          <tr>
+              <td>g1r3</td>
+              <td>2</td>
+              <td>3</td>
+              <td>4</td>
+              <td>5</td>
+              <td>6</td>
+              <td>7</td>
+          </tr>
+          <tr>
+              <td>g2r1</td>
+              <td>2</td>
+              <td>3</td>
+              <td>4</td>
+              <td>5</td>
+              <td>6</td>
+              <td>7</td>
+          </tr>
+          <tr>
+            <td>g2r2</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+        </tr>
+        <tr>
+          <td>g2r3</td>
+          <td>2</td>
+          <td>3</td>
+          <td>4</td>
+          <td>5</td>
+          <td>6</td>
+          <td>7</td>
+      </tr>
+  
+      </table>
+  
+  </body>
+  
+  <script>
+    
+    // queryselector a must
+      let element1 = document.querySelector('.ct1')  
+      let element2 = document.querySelector('.ct2')
+      let element3 = document.querySelector('.ct3')
+      let element4 = document.querySelector('.ct4')
+      let element5 = document.querySelector('.ct5')
+       
+      let today = new Date();
+      let day = today.getDay();
+      let dd = String(today.getDate()).padStart(2, '0');
+      let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+      let yyyy = today.getFullYear();  
+      let month = today.toLocaleString('default', { month: 'long' });
+      today = month.slice(0,3) + '.' + dd ;
+      //let utc = new Date().toJSON().slice(0,10).replace(/-/g,'/');
+     
+    // If your content contains only text:
+    element1.textContent = " ";
+    element2.textContent = today;
+    element3.textContent = today;
+    element4.textContent = today;
+    element5.textContent = today;
+     
+    // If your content contains more complicated tags:
+      element1.innerHTML = dd;
+      element2.innerHTML = '09:00 am-11:00 am';
+      element3.innerHTML = '<strong>12:00 pm-2:00 pm ' + '</strong> &ltKM&gt';
+      element4.innerHTML = '02:00 pm-04:00 pm ';
+      element5.innerHTML = '04:00 pm-05:00 pm ';
+  </script>
+  
+</html>

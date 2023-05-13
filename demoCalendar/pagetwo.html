@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+  <!--  <meta http-equiv="refresh" content="1">  -->
+
+    <script type="text/javascript"></script>
+    <style>
+
+        #goBack {
+            margin: auto;
+            text-align: center;
+            font-family:'Courier';
+            font-size: 25px;            
+            font-weight: normal;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 5px;
+            font-size: 35px;            
+        }
+        h1, .currDate {
+            font-family:'Courier';
+            font-weight: normal;
+
+        }
+        .currDate, th{
+            background: #bad170;
+            color:rgb(43, 55, 184);
+        }
+        .currDate {
+            border-radius: 25px;
+            border: rgb(212, 213, 222) solid;
+            border-width: 10px;
+            font-size: 40px;
+            text-align: center;
+            margin-bottom: 10px;
+        }  
+        table {
+            border-radius: 1em;
+            border-spacing: 2px;  
+    
+            border-collapse:separate;
+            
+            width: auto; height: auto;
+            
+            border:rgb(61, 54, 201);
+            border-width: 25px;
+
+            font-family: 'sans-serif';
+            font-size:20px; color: rgb(16, 10, 10);
+
+            margin-left:auto; 
+            margin-right:auto;
+        }  
+        th {
+            text-align: center;           
+            font-style: normal;
+            font-family: 'Cambria';
+            font-size: 30px; 
+            font-weight: normal;   
+            border-radius: 5px;
+            padding-left:25px;
+            padding-right:25px;            
+        }
+
+        td {
+    
+            border: thin single black collapse;
+             
+            padding: 1px 10px 15px 10px;
+            text-align: center;
+        }
+        tbody tr:nth-child(odd) {
+            background:rgb(222, 234, 193);
+ 
+        }
+        tbody tr:nth-child(even) {
+            background:rgb(222, 234, 193);
+        }
+    </style>
+    
+    <title>Planner Pagetwo</title>
+    <h1>Doctor's Appointment</h1>
+
+</head>
+<body>
+    <p class="currDate"></p>
+    <table>
+        <tbody>
+            <tr><th>Time</th>
+                <th>Medical</th>
+                <th>Dental</th>
+                <th>Vision</th>
+            </tr> 
+            <tr><th></th>
+                <th><button onClick="CrtMed">Create Medical Appointment</button></th>
+                <th><button onClick="CrtDen">Create Dental  Appointment</button></th>
+                <th><button onClick="CrtVis">Create Vision  Appointment</button></th>
+            </tr>
+            <tr><th>8:00</th><td rowspan=3>8-9 Med</td></tr>            
+            <tr><th>8:30</th></tr>  
+            <tr><th>9:00</th></tr> 
+            <tr><th>9:30</th></tr>            
+            <tr><th>10:00</th><td bgcolor="white"></td><td rowspan=4> 10-11:30 Den</td></tr>  
+            <tr><th>10:30</th></tr> 
+            <tr><th>11:00</th></tr>  
+            <tr><th>11:30</th></tr> 
+            <tr><th>12:00</th><td bgcolor="white"></td><td bgcolor="white"></td><td rowspan=3> 12-01:00 Den</td></tr>            
+            <tr><th>12:30</th></tr>  
+            <tr><th>01:00</th></tr> 
+        
+        </tbody>    
+    </table>
+
+    <div id="goBack"><a href="javascript:history.back()">go Back</a></div>    
+    
+    <script> 
+        console.log("bottompagetwo");
+        let queryString = location.search.substring(1);
+        let a = queryString.split("|"); // which creates an array
+        
+        let currDate = document.querySelector('.currDate');
+        if (a[0] == '') {
+            window.location = "index.html"
+        } else {
+            let d = new Date();
+            let localTime = d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
+            currDate.textContent = a[3] + ' ' +  a[0] + ', ' + a[2] + ' ' + localTime;
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+SOURCE: https://stackoverflow.com/questions/33051360/how-to-configure-tomcat-5-5-to-change-localhost-to-ip-address
+
+drop Index.html in: 
+/opt/homebrew/Cellar/tomcat/10.1.2/libexec/webapps/ROOT/
+
+listening port is found in:
+/opt/homebrew/etc/tomcat/catalina/server.xml
+
+NOTE: RESTART TOMCAT WITH THIS!!!
+===> "brew services restart tomcat"
+
+in server.xml find current is 8080. on your browser type localhost:8080
+    <Connector port="8080" protocol="HTTP/1.1"
+               connectionTimeout="20000"
+               redirectPort="8443" />
+
+appoint an IP address: server.xml search for 
+Find
+
+<Host name="localhost" appBase="webapps" unpackWARs="true" autoDeploy="true"> 
+And replace by (12.34.56.78 being your public ip-address)
+
+<Host name="12.34.56.78" appBase="webapps" unpackWARs="true" autoDeploy="true">
+
+Restart Tomcat.
+
+If you do have a firewall you need to forward port 8080 (or port 80 if you prefer) to your local machine at port 8080 where Tomcat is running.
+
+Test if it works by going to someone else's house and open a browser
+
+http://12.34.56.78:8080/examples
+Which will show you the examples from the tomcat/webapps directory.
+
+#
+run python in macos apache Web server
+source: https://editrocket.com/articles/python_apache_mac.html
+The macOS / Mac OS X operating system includes a pre-configured Apache web server and also includes the libraries needed to run Python. Thus, Python CGI scripts can be run without any configuration changes to the Apache configuration as long as the scripts are placed in the correct location and given the correct file permissions.
+
+The default location to place CGI programs for the Mac apache installation is in the following directory: 
+
+/Library/WebServer/CGI-Executables 
+
+Files placed in this directory can be accessed via the following URL: 
+
+http://localhost/cgi-bin/file-name
+
+In order for Apache to be able to execute the CGI script, the permissions on the file must be set correctly. For example, open EditRocket and create a file called test.py with the following contents. Save this file to the /Library/WebServer/CGI-Executables directory.
+
+#!/usr/bin/python
+print "Content-type: text/html"
+print
+print "<html><head>"
+print ""
+print "</head><body>"
+print "Test Page"
+print "</body></html>"
+Open a terminal window (Applications -> Utilities -> Terminal). Execute the following command: 
+
+cd /Library/WebServer/CGI-Executables 
+
+Then execute the following (if prompted, enter your password) 
+
+sudo chmod 755 test.py 
+
+You now have a Python program, test.py, saved with the correct permissions in the /Library/WebServer/CGI-Executables directory. 
+
+Now, we need to restart the web server to make sure the changes take effect. To restart, do the following:
+
+1. Go to System Preferences -> Sharing View 
+
+2. Uncheck the Web Sharing box. Then check the Web Sharing box again. This will start and stop the apache web server. 
+
+You can test this page by entering the following in your web browser: 
+
+http://localhost/cgi-bin/test.py
+
+## run py script inside html
+source: https://www.oneclickitsolution.com/blog/run-python-in-html/
+
+sample 1:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+   <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+   <title>Python HTML app Hello World</title>
+</head>
+<body>
+   <py-script>  
+   print("Hello World!")
+   </py-script>
+</body>
+</html>
+
+sample 2:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+   <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+   <title>Python HTML app</title>
+</head>
+<body>
+   <py-script>
+   from datetime import datetime
+  
+   print(f"It's now {datetime.now()}")
+   </py-script>
+</body>
+</html>
+
+sample 3:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+   <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+   <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-2.4.2.min.js"></script>
+   <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-gl-2.4.2.min.js"></script>
+   <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-2.4.2.min.js"></script>
+   <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-tables-2.4.2.min.js"></script>
+   <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-mathjax-2.4.2.min.js"></script>
+   <title>Chart Example</title>
+   <py-env>
+   - bokeh
+   </py-env>
+</head>
+<body>
+<h1>Bokeh Chart in PyScript</h1>
+   <div id="chart"></div>
+ 
+   <py-script>
+       import json
+       import pyodide
+       from js import Bokeh, console, JSON
+       from bokeh.embed import json_item
+       from bokeh.plotting import figure
+       from bokeh.resources import CDN
+ 
+       fruits = ['Apples', 'Banana', 'Mango', 'Grapes', 'Strawberries']
+       counts = [5, 3, 4, 4, 6]
+       p = figure(x_range=fruits, height=350, title="Fruit Counts", toolbar_location=None, tools="")
+       p.vbar(x=fruits, top=counts, width=0.9)
+       p.xgrid.grid_line_color = None
+       p.y_range.start = 0
+       p_json = json.dumps(json_item(p, "chart"))
+       Bokeh.embed.embed_item(JSON.parse(p_json))
+   </py-script>
+</body>
+</html>
