@@ -6,18 +6,70 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Sendpage</title>
+        <style>
+            body {
+                background-color: lightgray;
+                font-family: Arial;
+                margin: 0;
+                padding: 0;
+            }
+
+            h1 {
+                font-size: 24px;
+                margin: 20px;
+            }
+
+            label {
+                display: block;
+                font-size: 16px;
+                font-weight: bold;
+                margin-bottom: 10px;
+            }
+
+            input[type="email"],
+            input[typ=text],
+            textarea,
+            input[type=file] {
+                border-radius: 5px;
+                border: 1px solid #ccc;
+                font-size: 16px;
+                padding: 10px;
+                width: 100%;
+            }
+
+            .emailcontainer {
+                text-align: left;
+                margin: 20px;
+                width: 280px;
+            }
+        </style>
     </head>
 
     <body>
-        <h1>Send Page</h1>
+        <h1>Send Email Page</h1>
         <p>Compose an text, select file/image to attached</p>
         <p>Choose csv containing 2 columns (Name, Email)</p>
         <p> Click submit to send Page</p>
 
-        <label for="emailmesage">Type your email message:</label>
-        <textarea placeholder="Enter message here...s" id="emailmessage" name="emailmessage" rows="3" columns="60">
+        <div class="emailcontainer">
+            <label for="email">To:</label>
+            <input type="email" name="email" id="email" required><br>
 
-        </textarea>
+            <label for="subject">Subject:</label>
+            <input type="text" name="subject" id="subject" required><br>
+
+            <label for="message">Message</label>
+            <textarea name="message" placeholder="Enter message here..." id="message" required></textarea><br>
+
+            <label for="csv">CSV file:</label>
+            <input type="file" name="csv" id="csv" required>
+
+            <button onclick=alert('Send')>Send</button>
+
+        </div>
+
+
+
 
 
     </body>
